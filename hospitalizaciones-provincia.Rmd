@@ -1,0 +1,742 @@
+---
+title: "---"
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(plotly)
+df_hospitales_7d = readRDS(file = "df_hospitales_7d.rds")
+provincias = sort(unique(df_hospitales_7d$provincia))
+```
+
+Esta página muestra el número de personas hospitalizadas en cada provincia que, en el momento de ser hospitalizadas, dieron positivo en la prueba de la PCR.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[1]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[2]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[3]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[4]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[5]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[6]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[7]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[8]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[9]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[10]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[11]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[12]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[13]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[14]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[15]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[16]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[17]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[18]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[19]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[20]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[21]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[22]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[23]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[24]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[25]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[26]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[27]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[28]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[29]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[30]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[31]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[32]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[33]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[34]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[35]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[36]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[37]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[38]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[39]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[40]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[41]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[42]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[43]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[44]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[45]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[46]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[47]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[48]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[49]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[50]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[51]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+mi_provincia = provincias[52]
+provincia = df_hospitales_7d %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia$fecha,
+    y = provincia$nro_hospitalizaciones,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = paste("Hospitalizaciones en", mi_provincia))
+```

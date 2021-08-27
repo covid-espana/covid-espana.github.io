@@ -1,0 +1,255 @@
+---
+title: "Covid-19 en España"
+---
+
+Esta web contiene un análisis simple, en forma de gráficos, de los datos del COVID-19 que publican dos instituciones públicas:
+
+* El **Ministerio de Sanidad**, Consumo y Bienestar Social. [Ver web oficial aquí.](https://www.mscbs.gob.es)
+* El **Centro Nacional de Epidemiología** del Instituto de Salud Carlos III. [Ver web oficial aquí.](https://www.isciii.es/QuienesSomos/CentrosPropios/CNE/Paginas/default.aspx)
+
+La información oficial sobre el COVID-19 del Ministerio de Sanidad se puede consultar [aquí.](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm)
+
+
+El Ministerio de Sanidad informa, por provincia, del número de pruebas PCR realizadas, el número de pruebas de antígenos realizadas, el número de pruebas PCR con resultado positivo y el número de pruebas de antígeno con resultado positivo. El fichero con estos datos se puede descargar [aquí](https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/pruebasRealizadas.htm) y la serie comprende desde el 15 de marzo de 2020.
+
+El Centro Nacional de Epidemiología informa, por provincia, del número de hospitalizaciones, número de ingresos en UCI y número de defunciones por sexo y edad. El fichero con estos datos se puede descargar [aquí](https://cnecovid.isciii.es/covid19/), en la pestaña de "Documentación y datos".
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+###################################
+# Fichero del Ministerio de Sanidad
+###################################
+
+library(dplyr)
+library(lubridate)
+library(plotly)
+
+file_name <- "pcrs.csv"
+file_url = "https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Datos_Pruebas_Realizadas_Historico_26082021.csv"
+if(!file.exists(file_name)) {download.file(file_url, destfile = file_name)}
+
+# Leemos el csv y lo metemos en el marco de datos df_pcrs
+df_pcrs = read.table(
+  file = file_name,
+  header = TRUE,
+  sep = ";",
+  dec = ",",
+  na.strings = "",
+  stringsAsFactors = FALSE
+)
+
+# Damos formato a df_pcrs
+df_pcrs$FECHA_PRUEBA = dmy(df_pcrs$FECHA_PRUEBA) # Convertimos a tipo fecha
+df_pcrs = df_pcrs %>%
+  rename(
+    provincia = PROVINCIA,
+    fecha_pcr = FECHA_PRUEBA,
+    nro_pcrs = N_PCR,
+    nro_positivos = N_PCR_POSITIVOS
+  ) %>%
+  select(provincia, fecha_pcr, nro_pcrs, nro_positivos) %>%
+  arrange(provincia, fecha_pcr)
+
+df_pcrs = df_pcrs %>%  mutate(
+provincia = case_when(
+provincia == "Alicante/Alacant" ~ "Alicante",
+provincia == "Araba/Álava" ~ "Álava",
+provincia == "Bizkaia" ~ "Vizcaya",
+provincia == "Castellón/Castelló" ~ "Castellón",
+provincia == "Coruña, A" ~ "Coruña",
+provincia == "Gipuzkoa" ~ "Guipúzcoa",
+provincia == "Girona" ~ "Gerona",
+provincia == "Lleida" ~ "Lérida",
+provincia == "Ourense" ~ "Orensa",
+provincia == "Palmas, Las" ~ "Las Palmas",
+provincia == "Rioja, La" ~ "La Rioja",
+provincia == "Valencia/València" ~ "Valencia",
+TRUE  ~ provincia)
+)
+
+# Creamos el marco de datos df_pcrs_espana de datos de España
+df_pcrs_espana = df_pcrs %>%
+  group_by(fecha_pcr) %>%
+  summarize(nro_pcrs = sum(nro_pcrs),
+            nro_positivos = sum(nro_positivos))
+
+
+# Creamos el marco de datos df_pcrs_7d de datos semanales
+df_pcrs_7d = data.frame()
+provincias = unique(df_pcrs$provincia)
+
+
+for (i in 1:length(provincias)) {
+  mi_provincia = provincias[i]
+  mi_df = df_pcrs %>% filter(provincia == mi_provincia)
+  mi_df_7d = mi_df 
+  mi_df_7d$nro_pcrs = 0 
+  mi_df_7d$nro_positivos = 0
+  for (i in 7:nrow(mi_df)) {
+    mi_df_7d$nro_pcrs[i] = sum(mi_df$nro_pcrs[(i - 6):i])
+    mi_df_7d$nro_positivos[i] = sum(mi_df$nro_positivos[(i - 6):i])
+}
+  mi_df_7d = mi_df_7d[-c(1,2,3,4,5,6),]
+  df_pcrs_7d = rbind(df_pcrs_7d, mi_df_7d)
+}
+
+
+# Creamos el marco de datos df_pcrs_espana_7d de datos semanales de España
+df_pcrs_espana_7d = df_pcrs_7d %>%
+  group_by(fecha_pcr) %>%
+  summarize(nro_pcrs = sum(nro_pcrs),
+            nro_positivos = sum(nro_positivos))
+
+
+# Añadimos el campo de porcentaje de pcr positivas
+df_pcrs = df_pcrs %>% mutate(porcentaje = round(nro_positivos * 100 / nro_pcrs, 2))
+df_pcrs_espana = df_pcrs_espana %>% mutate(porcentaje = round(nro_positivos * 100 / nro_pcrs, 2))
+df_pcrs_7d = df_pcrs_7d %>% mutate(porcentaje = round(nro_positivos * 100 / nro_pcrs, 2))
+df_pcrs_espana_7d = df_pcrs_espana_7d %>% mutate(porcentaje = round(nro_positivos * 100 / nro_pcrs, 2))
+
+#print("Datos de provincias"); DT::datatable(tail(df_pcrs), options = list(dom = "t"))
+#print("Datos de España"); DT::datatable(tail(df_pcrs_espana), options = list(dom = "t"))
+#print("Datos de provincias semanales"); DT::datatable(tail(df_pcrs_7d), options = list(dom = "t"))
+#print("Datos de España semanales"); DT::datatable(tail(df_pcrs_espana_7d), options = list(dom = "t"))
+
+#Guardamos los marcos de datos para recuperarlos desde otras páginas
+saveRDS(object = df_pcrs, file = "df_pcrs.rds")
+saveRDS(object = df_pcrs_espana, file = "df_pcrs_espana.rds")
+saveRDS(object = df_pcrs_7d, file = "df_pcrs_7d.rds")
+saveRDS(object = df_pcrs_espana_7d, file = "df_pcrs_espana_7d.rds")
+```
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##############################################
+# Fichero del Centro Nacional de Epidemiología
+##############################################
+
+library(dplyr)
+library(lubridate)
+library(plotly)
+
+file_name <- "hospitales.csv"
+file_url = "https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv"
+if(!file.exists(file_name)) {download.file(file_url, destfile = file_name)}
+
+# Leemos el csv y lo metemos en el marco de datos df_pcrs
+df_hospitales = read.table(
+  file = file_name,
+  header = TRUE,
+  sep = ",",
+  dec = ".",
+  na.strings = "",
+  stringsAsFactors = FALSE
+)
+
+# Damos formato a df_hospitales
+df_hospitales$fecha = ymd(df_hospitales$fecha) # Convertimos a tipo fecha
+df_hospitales = df_hospitales %>%
+  rename(provincia = provincia_iso, 
+         nro_hospitalizaciones = num_hosp) %>%
+  group_by(provincia, fecha) %>%
+  summarize(nro_hospitalizaciones = sum(nro_hospitalizaciones)) %>%
+  arrange(provincia, fecha)
+
+saveRDS(object = df_hospitales, file = "df_hospitales.rds")
+rm(df_hospitales)
+df_hospitales = readRDS(file = "df_hospitales.rds")
+
+# Ponemos los nombres de las provincias ya que viene el identificador ISO
+df_hospitales = df_hospitales %>%  mutate(
+provincia = case_when(
+provincia == "C" ~ "La Coruña",
+provincia == "VI" ~ "Álava",
+provincia == "AB" ~ "Albacete",
+provincia == "A" ~ "Alicante",
+provincia == "AL" ~ "Almería",
+provincia == "O" ~ "Asturias",
+provincia == "AV" ~ "Ávila",
+provincia == "BA" ~ "Badajoz",
+provincia == "PM" ~ "Baleares",
+provincia == "B" ~ "Barcelona",
+provincia == "BI" ~ "Vizcaya",
+provincia == "BU" ~ "Burgos",
+provincia == "CC" ~ "Cáceres",
+provincia == "CA" ~ "Cádiz",
+provincia == "S" ~ "Cantabria",
+provincia == "CS" ~ "Castellón",
+provincia == "CR" ~ "Ciudad Real",
+provincia == "CO" ~ "Córdoba",
+provincia == "CU" ~ "Cuenca",
+provincia == "SS" ~ "Guipúzcoa",
+provincia == "GI" ~ "Gerona",
+provincia == "GR" ~ "Granada",
+provincia == "GU" ~ "Guadalajara",
+provincia == "H" ~ "Huelva",
+provincia == "HU" ~ "Huesca",
+provincia == "J" ~ "Jaén",
+provincia == "LO" ~ "La Rioja",
+provincia == "GC" ~ "Las Palmas",
+provincia == "LE" ~ "León",
+provincia == "L" ~ "Lérida",
+provincia == "LU" ~ "Lugo",
+provincia == "M" ~ "Madrid",
+provincia == "MA" ~ "Málaga",
+provincia == "MU" ~ "Murcia",
+provincia == "NA" ~ "Navarra",
+provincia == "OR" ~ "Orense",
+provincia == "P" ~ "Palencia",
+provincia == "PO" ~ "Pontevedra",
+provincia == "SA" ~ "Salamanca",
+provincia == "TF" ~ "Santa Cruz de Tenerife",
+provincia == "SG" ~ "Segovia",
+provincia == "SE" ~ "Sevilla",
+provincia == "SO" ~ "Soria",
+provincia == "T" ~ "Tarragona",
+provincia == "TE" ~ "Teruel",
+provincia == "TO" ~ "Toledo",
+provincia == "V" ~ "Valencia",
+provincia == "VA" ~ "Valladolid",
+provincia == "ZA" ~ "Zamora",
+provincia == "Z" ~ "Zaragoza",
+provincia == "CE" ~ "Ceuta",
+provincia == "ML" ~ "Melilla",
+TRUE  ~ provincia)
+)
+
+# Creamos el marco de datos df_hospitales_espana de datos de España
+df_hospitales_espana = df_hospitales %>%
+  group_by(fecha) %>%
+  summarize(nro_hospitalizaciones = sum(nro_hospitalizaciones))
+
+# Creamos el marco de datos df_hospitales_7d de datos semanales
+df_hospitales_7d = data.frame()
+provincias = unique(df_hospitales$provincia)
+
+for (i in 1:length(provincias)) {
+  mi_provincia = provincias[i]
+  mi_df = df_hospitales %>% filter(provincia == mi_provincia)
+  mi_df_7d = mi_df 
+  mi_df_7d$nro_hospitalizaciones = 0 
+  for (i in 7:nrow(mi_df)) {
+    mi_df_7d$nro_hospitalizaciones[i] = sum(mi_df$nro_hospitalizaciones[(i - 6):i])
+}
+  mi_df_7d = mi_df_7d[-c(1,2,3,4,5,6),]
+  df_hospitales_7d = rbind(df_hospitales_7d, mi_df_7d)
+}
+
+# Creamos el marco de datos df_hospitales_espana_7d de datos semanales de España
+df_hospitales_espana_7d = df_hospitales_7d %>%
+  group_by(fecha) %>%
+  summarize(nro_hospitalizaciones = sum(nro_hospitalizaciones))
+
+
+#print("Datos de provincias"); DT::datatable(tail(df_hospitales), options = list(dom = "t"))
+#print("Datos de España"); DT::datatable(tail(df_hospitales_espana), options = list(dom = "t"))
+#print("Datos de provincias semanales"); DT::datatable(tail(df_hospitales_7d), options = list(dom = "t"))
+#print("Datos de España semanales"); DT::datatable(tail(df_hospitales_espana_7d), options = list(dom = "t"))
+
+#Guardamos los marcos de datos para recuperarlos desde otras páginas
+saveRDS(object = df_hospitales, file = "df_hospitales.rds")
+saveRDS(object = df_hospitales_espana, file = "df_hospitales_espana.rds")
+saveRDS(object = df_hospitales_7d, file = "df_hospitales_7d.rds")
+saveRDS(object = df_hospitales_espana_7d, file = "df_hospitales_espana_7d.rds")
+```

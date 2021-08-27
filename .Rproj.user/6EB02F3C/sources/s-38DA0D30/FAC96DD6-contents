@@ -1,0 +1,45 @@
+---
+title: "---"
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(lubridate)
+library(plotly)
+df_pcrs_espana_7d = readRDS(file = "df_pcrs_espana_7d.rds")
+```
+
+En está página comparamos, mes a mes, el año 2020 con el año 2021 en cuanto a porcentaje de PCRs positivas.
+
+Al principio de la pandemia,en los primeros meses de 2020, los porcentajes de PCRs positivas fueron mucho mayores que en 2021.
+
+Desde mayo de 2021 hasta el momento en que se escriben estas líneas, siempre ha habido un porcentaje de PCRs positivas mayor que en el correspondiente mes de 2020.
+
+La tendencia parece estar cambiando pero es necesario esperar algunas semanas mas para poder decirlo.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+anho_2020 = df_pcrs_espana_7d %>% filter(year(fecha_pcr)==2020)
+anho_2021 = df_pcrs_espana_7d %>% 
+  filter(year(fecha_pcr)==2021) %>%
+  mutate(fecha_nueva = fecha_pcr - years(1)) %>%
+  filter(fecha_nueva >= dmy(21032020))
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = anho_2020$fecha_pcr,
+    y = anho_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = "Porcentaje de PCRs positivas. 2020 vs 2021.")  %>%
+  plotly::add_trace(
+    x = anho_2021$fecha_nueva,
+    y = anho_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  ) 
+
+```
+
+

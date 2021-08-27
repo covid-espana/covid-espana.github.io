@@ -1,0 +1,1241 @@
+---
+title: "---"
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(lubridate)
+library(plotly)
+df_pcrs_7d = readRDS(file = "df_pcrs_7d.rds")
+
+provincias = unique(df_pcrs_7d$provincia)
+
+anho_2020 = df_pcrs_7d %>% filter(year(fecha_pcr)==2020)
+anho_2021 = df_pcrs_7d %>% 
+  filter(year(fecha_pcr)==2021) %>%
+  mutate(fecha_nueva = fecha_pcr - years(1)) %>%
+  filter(fecha_nueva >= dmy(21032020))
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[1]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[2]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[3]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[4]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[5]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[6]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[7]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[8]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[9]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[10]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[11]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[12]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[13]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[14]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[15]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[16]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[17]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[18]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[19]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[20]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[21]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[22]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[23]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[24]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[25]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[26]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[27]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[28]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[29]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[30]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[31]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[32]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[33]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[34]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[35]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[36]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[37]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[38]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[39]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[40]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[41]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[42]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[43]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[44]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[45]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[46]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[47]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[48]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[49]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[50]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[51]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[52]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mi_provincia = provincias[53]
+provincia_2020 = anho_2020 %>% filter(provincia == mi_provincia)
+provincia_2021 = anho_2021 %>% filter(provincia == mi_provincia)
+
+plot_ly() %>%
+  plotly::add_trace(
+    x = provincia_2020$fecha_pcr,
+    y = provincia_2020$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2020"
+  ) %>% layout(title = paste(mi_provincia, "2020 vs 2021."))  %>%
+  plotly::add_trace(
+    x = provincia_2021$fecha_nueva,
+    y = provincia_2021$porcentaje,
+    type = "scatter",
+    mode = "lines",
+    name = "Año 2021"
+  )
+
+```
+
+

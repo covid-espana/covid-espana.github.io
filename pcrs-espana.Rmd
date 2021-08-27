@@ -1,0 +1,33 @@
+---
+title: "---"
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(plotly)
+df_pcrs_espana_7d = readRDS(file = "df_pcrs_espana_7d.rds")
+```
+
+El ministerio de Sanidad informa de las pruebas PCR realizadas cada día desde el 15 de marzo de 2020.
+
+Es habitual analizar los datos acumulados durante 7 o 14 días ya que se obtiene una visión general mejor que analizando el dato de cada día.
+
+En esta web **vamos a utilizar siempre los datos acumulados durante los 7 últimos días**, tanto para analizar las PCR realizadas, como las PCR positivas, hospitalizaciones, etc.
+
+El siguiente gráfico muestra la evolución del número de PCR realizadas (entre todas las provincias de España).
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot_ly() %>%
+  plotly::add_trace(
+    x = df_pcrs_espana_7d$fecha_pcr,
+    y = df_pcrs_espana_7d$nro_pcrs,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = "Número de PCRs realizadas en España")
+```
+
+El número de pruebas PCR realizadas ha ido aumentando con el tiempo. Al principio de la pandemia se hacían relativamente pocas. Hasta mediados de abril de 2020 se estaban haciendo menos de 200 mil PCR semanales. No es hasta principios de agosto de 2020 que se llega a 400 mil PCR semanales, cifra de la que no se ha bajado desde entonces.
+
+Sólo en dos periodos se ha superado el número de 800 mil PCR semanales: entre mediados de octubre y mediados de noviembre de 2020, y entre mediados de enero y mediados de febrero de 2021.
+

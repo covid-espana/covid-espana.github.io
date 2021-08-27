@@ -1,0 +1,69 @@
+---
+title: "---"
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(plotly)
+df_pcrs_espana_7d = readRDS(file = "df_pcrs_espana_7d.rds")
+```
+
+### Porcentaje de PCRs positivas
+
+En la sección "PCRs últimos 7 días" de esta web se puede comprobar que el número de PCRs realizadas semanalmente ha ido variando mucho de unas épocas del año a otras. Esta variación ocurre, además, en cada provincia.
+
+Por ello, el número de PCRs semanales que han sido *positivas* no es significativo por sí mismo, hay que tener en cuenta cuántas PCRs se hicieron.
+
+El siguiente gráfico muestra el porcentaje de PCRs semanales cuyo resultado fue *positivo*, es decir, que la prueba PCR indicó que la persona estaba enferma de Covid-19.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot_ly() %>%
+  plotly::add_trace(
+    x = df_pcrs_espana_7d$fecha_pcr,
+    y = df_pcrs_espana_7d$porcentaje,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = "Porcentaje de PCRs positivas en España")
+```
+
+El porcentaje de PCRs positivas era enorme al principio de la pandemia, no bajando del 10% hasta finales de abril de 2020.
+
+* Desde mediados de agosto de 2020 hasta mediados de febrero de 2021, el porcentaje de PCRs positivas se mantiene entre el 10% y el 15%.
+* Después, hasta principios de julio de 2021, pasa a mantenerse entre el 5% y el 10%
+* Desde entonces, el porcentaje vuelve a ubicarse entre el 10% y el 15%.
+
+### Número de PCRs positivas
+
+Por lo comentado anteriormente, el número de PCRs positivas no es un indicador claro, ya que el número de PCRs realizadas varía mucho de unas épocas a otras.
+
+No obstante, se suele utilizar en los medios de comunicación así que lo mostramos a continuación también.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot_ly() %>%
+  plotly::add_trace(
+    x = df_pcrs_espana_7d$fecha_pcr,
+    y = df_pcrs_espana_7d$nro_positivos,
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = "Número de PCRs positivas en España")
+```
+
+### Incidencia acumulada (a 7 días)
+
+La incidencia acumulada es básicamente lo mismo que el número de PCRs positivas. La única diferencia es que se adaptan las cifras a una población de 100 mil personas. De esa manera, se puede comparar unos países con otros, unas ciudades con otras, etc...
+
+Es decir, no podemos comparar el número de PCRs positivas de un país de quinientos millones de habitantes con un país de medio millón de habitantes. Lógicamente, siempre habrá más PCRs positivas en el primero. Para comparar, hay que utilizar la incidencia acumulada.
+
+No obstante, la incidencia acumulada sigue siendo un indicador poco claro, por el comentado hecho de que el número de PCRs varía mucho de unas épocas a otras.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot_ly() %>%
+  plotly::add_trace(
+    x = df_pcrs_espana_7d$fecha_pcr,
+    y = round(df_pcrs_espana_7d$nro_positivos * 0.002126, 2),
+    type = "scatter",
+    mode = "lines"
+  ) %>% layout(title = "Incidencia acumulada en España")
+```
+
